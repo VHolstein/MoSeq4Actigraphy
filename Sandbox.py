@@ -42,7 +42,8 @@ data = {'mask':mask}
 states = {'x':x}
 params = {}
 
-params['pi'] = initial_transitions(key, **init_hypparams)
+# params['pi'] = initial_transitions(key, **init_hypparams)
+params['betas'], params['pi'] = initial_hdp_transitions(key, **trans_hypparams)
 params['Ab'],params['Q']= initial_ar_params(key, **ar_hypparams)
 states['z'] = resample_stateseqs(key, **data, **states, **params)
 
